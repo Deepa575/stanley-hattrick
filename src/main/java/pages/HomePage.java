@@ -2,28 +2,27 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-
+	
 	private WebDriver driver;
 
-	// 1. By Locators: OR
+	//1. Declaration
 	private By HomeBtn = By.xpath("//button[text()=' Home']");
 	private By CustomersBtn = By.xpath("//button[text()=' Customers']");
 	private By LocationsBtn = By.xpath("//button[text()=' Locations']");
 	private By DeviceMonitoringBtn = By.xpath("//button[text()=' Device Monitoring']");
 	private By AdministrationBtn = By.xpath("//button[text()=' Administration ']");
 
-	// 2. Constructor of the page class:
+	//2. Initialization
 	public HomePage(WebDriver driver) {
-	this.driver = driver;
-	}
-	
-	//3. Utilization
-	public WebDriver getDriver() {
-		return driver;
+		PageFactory.initElements(driver, this);
 	}
 
+	//3. Utilization
 	public By getHomeBtn() {
 		return HomeBtn;
 	}
@@ -43,6 +42,15 @@ public class HomePage {
 	public By getAdministrationBtn() {
 		return AdministrationBtn;
 	}
+	
+	public String getHomePageTitle() {
+		return driver.getTitle();
+	}
+	
+	
+	
+
+	
 		
 	// 3. page actions: features(behavior) of the page the form of methods:
 
